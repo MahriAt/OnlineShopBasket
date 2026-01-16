@@ -8,17 +8,17 @@ public class Main {
         User u1 = new User("Ben", "USA", 123);
         User u2 = new User("Alice", "Turkiye", 345);
         
-        Cloth c1 = new Cloth(" Black Dress","M", Clothes.DRESS, 250);
-        Cloth c2 = new Cloth("H&M jeans, Blue", "S", Clothes.JEANS, 389);
-        Cloth c3 = new Cloth("DeFacto T-Shirt", "XL", Clothes.TSHIRT, 500);
-        Cloth c4 = new Cloth("Winter Coat", "L", Clothes.COAT, 1200);
-        Cloth c5 = new Cloth("Sport Shorts","M",Clothes.SHORTS,500);
+        Product c1 = new Cloth(" Black Dress","M", Clothes.DRESS, 250);
+        Product c2 = new Cloth("H&M jeans, Blue", "S", Clothes.JEANS, 389);
+        Product c3 = new Cloth("DeFacto T-Shirt", "XL", Clothes.TSHIRT, 500);
+        Product c4 = new Cloth("Winter Coat", "L", Clothes.COAT, 1200);
+        Product c5 = new Cloth("Sport Shorts","M",Clothes.SHORTS,500);
         
-        Other oth1 = new Other("Iphone 7", "Brand new phone with screen protector", 500);
-        Other oth2 = new Other("Umprella", "Black, red an purpule umbrella", 60);
-        Other oth3 = new Other("Laptop Lenovo", "RAM:32 SSD: 2TB CPU: i5", 13000);
-        Other oth4 = new Other("Pencils", "Colorful pencils", 45);
-        Other oth5 = new Other("JBL Headphones", "Bluetooth Headphones", 1600);
+        Product oth1 = new Other("Iphone 7", "Brand new phone with screen protector", 500);
+        Product oth2 = new Other("Umprella", "Black, red an purpule umbrella", 60);
+        Product oth3 = new Other("Laptop Lenovo", "RAM:32 SSD: 2TB CPU: i5", 13000);
+        Product oth4 = new Other("Pencils", "Colorful pencils", 45);
+        Product oth5 = new Other("JBL Headphones", "Bluetooth Headphones", 1600);
         
         Basket b1 = new Basket(u1);
         Basket b2 = new Basket(u2);
@@ -52,7 +52,6 @@ public class Main {
         b2.delete(oth5, 5, oth5.getPrice());
         b2.listBasket();
         b2.Acceptorder();
-        b2.listBasket();
-        
+        b2.listBasket(); 
     }
 }

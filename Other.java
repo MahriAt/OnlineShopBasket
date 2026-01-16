@@ -1,6 +1,6 @@
 package com.example;
 
-public class Other implements Platform,Product{
+public class Other extends Product implements Platform{
     String name;
     String id;
     String description;
@@ -15,25 +15,15 @@ public class Other implements Platform,Product{
     public void getTax(int rawprice){
         tax = rawprice * 0.15f;
     }
-    public void calculatePrice(int rawprice){
-        price = tax + platformInterest + rawprice;
-    }
+    
     
     Other(String name, String description, int rawprice){
-        this.name = name;
+        super(name, rawprice);
         this.description = description;
-        generateId();
-        getTax(rawprice);
-        calculatePrice(rawprice);
+        
     }
     
     void info(){
-        System.out.println("\nId: "+ id +"\nName: "+ name +"\nDescription: "+ description +"\nPrice: "+ price);
-    }
-    public float getPrice(){
-        return price;
-    }
-    public String toString(){
-        return name;
+        System.out.println("\nId: "+ id +"\nName: "+ name +"\nDescription: "+ description +"\nPrice: "+ this.getPrice());
     }
 }

@@ -1,31 +1,34 @@
 package com.example;
 import java.util.LinkedList;
 import java.util.Iterator;
+import java.util.ListIterator;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Basket{
     User user;
     float totalPrice;
     int orderId;
-    LinkedList addedProducts = new LinkedList();
+    LinkedList<Product> addedProducts = new LinkedList<>();
     static int basketId;
     
     //----------Methods------------------//
-    void add(Object o, int quantity, float price){
+    void add(Product p, int quantity, float price){
         int i = 0;
         while(i < quantity){
-            addedProducts.add(o);
+            addedProducts.add(p);
             totalPrice += price;
             i++;
         }
-        System.out.println(quantity + " of "+ o +" Price: "+ price +" was added. \nYour total: "+ totalPrice);
+        System.out.println(quantity + " of "+ p +" Price: "+ price +" was added. \nYour total: "+ totalPrice);
+        Collections.sort(addedProducts);
     }
-    void delete(Object o, int quantity, float price){
+    void delete(Product o, int quantity, float price){
         int deletedNum = 0;
         for (int i = 0; i< addedProducts.size(); i++){
-            Object obj = addedProducts.get(i);
+            Product product = addedProducts.get(i);
             if(deletedNum == quantity) break;
-            if(obj == o){
+            if(product.equals(o)){
                 addedProducts.remove(i);
                 totalPrice -= price;
                 deletedNum++;
@@ -34,35 +37,34 @@ public class Basket{
         System.out.println(quantity +" of "+ o +" was deleted. \nYour total: "+ totalPrice);
     }
     void listBasket(){
+        ListIterator itr = addedProducts.listIterator();
         if(addedProducts.size()==0){
             System.out.println("\nYour Basket is empty.");
         }
         else{
-            int j=1;
-            Object o1 = addedProducts.get(0);
-            for (int i = 1; i< addedProducts.size(); i++){
-                Object o2 = addedProducts.get(i);
-                if(o1==o2){
+            int j=0;
+            Product o1 = addedProducts.get(0);
+            for(Product p : addedProducts){
+                if(o1.equals(p)){
                     j++;
-                    o1 = o2;
                 }
                 else{
-                    System.out.println(o1 +": "+ j);
-                    o1=o2;
-                    j = 1;
+                    System.out.println(o1+ ":  " + j);
+                    j= 1;
+                    o1 = p;
                 }
             }
-            System.out.println(o1 +": "+ j);
-        }            
+            System.out.println(o1+ ":  " + j);
         System.out.println("\nTotal: "+ totalPrice);
-    }
+    }}
     void freeBasket(){
-        Iterator itr = addedProducts.iterator();
+        ListIterator itr = addedProducts.listIterator();
         while(itr.hasNext()){
             itr.next();
             itr.remove();
         }
         totalPrice = 0f;
+        System.out.println("\nYour Basket is empty.");
     }
     void Acceptorder(){
         if(addedProducts.size()==0)
